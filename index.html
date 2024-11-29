@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sistema de Votación</title>
+
+    <!-- Fuentes y Estilos -->
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animate.css">
+
+    <link rel="shortcut icon" type="image/ico" href="img/favicon.ico"/>
+    <link rel="manifest" href="manifest.json">
+
+
+    <!-- Encabezado -->
+    <div class="header">
+        Sistema de Votación <i class="fa fa-star"></i>
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="container">
+
+        <!-- Instrucciones -->
+        <p>Selecciona tu personaje favorito y vota por él. ¡Los resultados se actualizan en tiempo real!</p>
+
+        <!-- Tarjetas de personajes -->
+        <div class="cards">
+            <div class="card">
+                <img src="img/avatars/Bruno.jpg" alt="Bruno">
+                <h3>Bruno</h3>
+                <button class="vote-button" data-user="Bruno">Votar</button>
+            </div>
+
+            <div class="card">
+                <img src="img/avatars/lana.jpg" alt="Lana">
+                <h3>Lana</h3>
+                <button class="vote-button" data-user="Lana">Votar</button>
+            </div>
+
+            <div class="card">
+                <img src="img/avatars/Olivia.jpg" alt="Olivia">
+                <h3>Olivia</h3>
+                <button class="vote-button" data-user="Olivia">Votar</button>
+            </div>
+
+            <div class="card">
+                <img src="img/avatars/Taylor.jpg" alt="Taylor">
+                <h3>Taylor</h3>
+                <button class="vote-button" data-user="Taylor">Votar</button>
+            </div>
+
+            <div class="card">
+                <img src="img/avatars/Ariana.jpg" alt="Ariana">
+                <h3>Ariana</h3>
+                <button class="vote-button" data-user="Ariana">Votar</button>
+            </div>
+        </div>
+
+        
+
+        <!-- Resultados -->
+        <div class="results">
+            <h2>Resultados en tiempo real</h2>
+            <ul id="resultsList">
+                <li>Bruno: <span id="BrunoVotes">0</span> votos</li>
+                <li>Lana: <span id="LanaVotes">0</span> votos</li>
+                <li>Olivia: <span id="OliviaVotes">0</span> votos</li>
+                <li>Taylor: <span id="TaylorVotes">0</span> votos</li>
+                <li>Ariana: <span id="ArianaVotes">0</span> votos</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        const voteButtons = document.querySelectorAll('.vote-button');
+        const voteCounts = {
+            Bruno: 0,
+            Lana: 0,
+            Olivia: 0,
+            Taylor: 0,
+            Ariana: 0
+        };
+
+        voteButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const user = button.dataset.user;
+                voteCounts[user]++;
+                updateResults();
+                alert(`¡Gracias por votar por ${user}!`);
+            });
+        });
+
+        function updateResults() {
+            for (const user in voteCounts) {
+                document.getElementById(`${user}Votes`).textContent = voteCounts[user];
+            }
+        }
+    </script>
+    
+     <script src="js/libs/jquery.js"></script>
+     <script src="js/app.js"></script>
+
+</body>
+</html>
